@@ -1,0 +1,44 @@
+     1                                  ;This program just moves data around. Used to practice the use of debugger
+     2                                  
+     3                                  section .data
+     4 00000000 7A                      bNum	db	122
+     5 00000001 BF2F                    wNum	dw	12223
+     6 00000003 C974E542                dNum	dd	1122333897
+     7 00000007 1581E97DF4102211        qNum1	dq	1234567890123456789
+     8 0000000F C4E5010000000000        qNum2	dq	124356
+     9 00000017 9A99999999991440        qNum3	dq	5.15
+    10                                  
+    11                                  section .text
+    12                                  global main
+    13                                  main:
+    14                                  start:
+    15 00000000 55                      	push rbp
+    16 00000001 4889E5                  	mov rbp, rsp
+    17                                  label1:
+    18 00000004 48C7C0FFFFFFFF          	mov rax, -1		;fill rax with 1s (1b two's complement fills with 1s)
+    19 0000000B 8A0425[00000000]        	mov al, byte [bNum]
+    20 00000012 4831C0                  	xor rax, rax
+    21 00000015 8A0425[00000000]        	mov al, byte [bNum]
+    22                                  label2:
+    23 0000001C 48C7C0FFFFFFFF          	mov rax, -1
+    24 00000023 668B0425[01000000]      	mov ax, word [wNum]
+    25 0000002B 4831C0                  	xor rax, rax
+    26 0000002E 668B0425[01000000]      	mov ax, word [wNum]
+    27                                  label3:
+    28 00000036 48C7C0FFFFFFFF          	mov rax, -1
+    29 0000003D 8B0425[03000000]        	mov eax, dword [dNum]
+    30                                  label4:
+    31 00000044 48C7C0FFFFFFFF          	mov rax, -1
+    32 0000004B 488B0425[07000000]      	mov rax, qword [qNum1]
+    33 00000053 48890425[0F000000]      	mov qword [qNum2], rax
+    34 0000005B B840E20100              	mov rax, 123456
+    35                                  label5:
+    36 00000060 F30F7E0425-             	movq xmm0, [qNum3]
+    36 00000065 [17000000]         
+    37                                  ending:
+    38 00000069 4889EC                  	mov rsp, rbp
+    39 0000006C 5D                      	pop rbp
+    40                                  exit:
+    41 0000006D B83C000000              	mov rax, 60
+    42 00000072 BF00000000              	mov rdi, 0
+    43 00000077 0F05                    	syscall

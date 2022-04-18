@@ -1,0 +1,8 @@
+#!/bin/bash
+make
+
+FILE=./memmov
+if test -f "$FILE"; then
+	chmod +x "$FILE"
+fi
+
