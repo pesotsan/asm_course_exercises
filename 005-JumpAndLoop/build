@@ -1,0 +1,18 @@
+#!/bin/bash
+make
+
+FILE1=./jump
+if test -f "$FILE1"; then
+	chmod +x "$FILE1"
+fi
+
+FILE2=./oldschoolloop
+if test -f "$FILE2"; then
+	chmod +x "$FILE2"
+fi
+
+FILE3=./loopinst
+if test -f "$FILE3"; then
+	chmod +x "$FILE3"
+fi
+
