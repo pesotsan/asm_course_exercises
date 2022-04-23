@@ -67,7 +67,7 @@ sqrt:
 printsqrt:
 	mov rdi, f_sqrt
 	movsd xmm0, [num1]
-	mov rax, 3
+	mov rax, 1
 	call printf
 
 exit:
