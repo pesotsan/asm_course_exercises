@@ -19,7 +19,7 @@ printn:
 	movsd xmm0, [num1]
 	movsd xmm1, [num2]
 	mov rdi, fmt
-	mov rax, 2		;for printf rax specifies amount of float digits
+	mov rax, 2		;for printf rax specifies amount of float registers
 	call printf
 
 sum:
@@ -67,7 +67,7 @@ sqrt:
 printsqrt:
 	mov rdi, f_sqrt
 	movsd xmm0, [num1]
-	mov rax, 1
+	mov rax, 2
 	call printf
 
 exit:
